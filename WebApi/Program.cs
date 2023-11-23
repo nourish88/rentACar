@@ -1,5 +1,6 @@
 using Application;
 using Core.CrossCuttingConcerns.Exceptions.Extensions;
+using Infrastructure;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddPersistenceServices(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddHostedService<BgService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
